@@ -1,0 +1,174 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* client/src/App.css */
+
+.App ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: #FDF7E3;
+}
+.App {
+  max-width: 480px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 1rem;
+}
+h1 {
+  font-family: 'Rubik', sans-serif;
+  font-size: 2rem;
+  letter-spacing: 0.1em;
+  margin: 0;
+}
+.session-info {
+  font-size: 0.9rem;
+  color: #555;
+}
+.btn {
+  background: #045D56;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+.session-controls .join-controls {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+.session-controls input,
+.join-controls input,
+.guess-input input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border: 2px solid #045D56;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+.game-area .guess-input {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.error {
+  color: #B00020;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+.guess-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.guess-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #F5EFE6;
+  border: 1px solid #D4BE98;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 1rem;
+}
+.guess-text {
+  text-transform: lowercase;
+  font-size: 1rem;
+}
+.guess-rank {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+.win-screen {
+  text-align: center;
+  margin-top: 2rem;
+}
+.name-entry {
+  display: flex;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.5rem;
+  background: #045D56;
+  color: white;
+  border-radius: 50%;
+  font-weight: bold;
+}
+.win-banner {
+  background: #E8F5E9;
+  color: #2E7D32;
+  padding: 0.75rem;
+  border: 1px solid #A5D6A7;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  text-align: center;
+  font-weight: bold;
+}
+.restart-btn {
+  margin-left: 1rem;
+}
+
+/* client/src/App.css */
+.session-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;           /* increase from 0.5rem to 1rem */
+  justify-content: center;
+  margin-bottom: 1rem;
+}
