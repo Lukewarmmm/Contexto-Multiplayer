@@ -2,6 +2,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import io from 'socket.io-client';
 import './App.css';
 
+const API = process.env.REACT_APP_API_URL;
+
 function App() {
   // Username setup
   const [nameInput, setNameInput] = useState('');
@@ -22,7 +24,8 @@ function App() {
 
   // 1) Establish Socket.IO connection once
   useEffect(() => {
-    socketRef.current = io('http://localhost:3001');
+    // Connect to your deployed server
+    socketRef.current = io(API);
     return () => socketRef.current.disconnect();
   }, []);
 
@@ -85,7 +88,7 @@ function App() {
     setCurrentTurn(null);
     setMode(modeType);
 
-    const res = await fetch('http://localhost:3001/api/start', {
+    const res = await fetch(`${API}/api/start`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ mode: modeType })
@@ -100,7 +103,7 @@ function App() {
     setError('');
 
     // fetch mode from server
-    const res = await fetch(`http://localhost:3001/api/mode/${joinId.trim()}`);
+    const res = await fetch(`${API}/api/mode/${joinId.trim()}`);
     const { mode: joinedMode } = await res.json();
     setMode(joinedMode);
     setSessionId(joinId.trim());
@@ -124,7 +127,7 @@ function App() {
     }
     setError('');
 
-    const res = await fetch('http://localhost:3001/api/guess', {
+    const res = await fetch(`${API}/api/guess`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ sessionId, guess: trimmed, userName })
@@ -139,7 +142,7 @@ function App() {
 
   // Restart the current game (same session)
   const restartGame = async () => {
-    await fetch('http://localhost:3001/api/restart', {
+    await fetch(`${API}/api/restart`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ sessionId })
@@ -204,16 +207,7 @@ function App() {
         ) : (
             /* Game area */
             <div className="game-area">
-              {mode === 'alternating' && won && winningGuesser && (
-                  <div className="win-banner">
-                    🎉 {winningGuesser} guessed the word!
-                    <button className="btn restart-btn" onClick={restartGame}>
-                      Restart
-                    </button>
-                  </div>
-              )}
-
-              {mode === 'open' && won && winningGuesser && (
+              {won && winningGuesser && (
                   <div className="win-banner">
                     🎉 {winningGuesser} guessed the word!
                     <button className="btn restart-btn" onClick={restartGame}>
